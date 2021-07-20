@@ -1,0 +1,38 @@
+.header{
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    .header_wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .header__profile{
+        height: 40px;
+        width: 40px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }.header_searchbar{
+        border-radius: 40px;
+        overflow: hidden;
+        border: 1px solid salmon;
+        input{
+            border: none;
+            outline: none;
+            width: 100%;
+            height: 100%;
+            padding: 0 20px;
+            color: rgb(241, 101, 86);
+            font-weight: bold;
+        }
+    }
+}
