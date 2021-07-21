@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Test;
-
+use App\Http\Controllers\ImageGenerator;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FavouriteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test', [Test::class, 'index']);
+Route::get('/test', [ImageGenerator::class, 'getImage']);
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/fav', [FavouriteController::class, 'getFavImages']);
+Route::post('/addfav', [FavouriteController::class, 'addFavImage']);
