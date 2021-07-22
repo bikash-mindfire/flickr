@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageGenerator;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\PlaceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +25,5 @@ Route::get('/test', [ImageGenerator::class, 'getImage']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/fav', [FavouriteController::class, 'getFavImages']);
 Route::post('/addfav', [FavouriteController::class, 'addFavImage']);
+Route::get('/get-places', [PlaceController::class, 'getPlaces']);
+Route::post('/add-new-place', [PlaceController::class, 'addPlace']);

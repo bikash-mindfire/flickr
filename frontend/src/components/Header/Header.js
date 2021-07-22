@@ -9,10 +9,13 @@ const Header = ({setGalleryImages, setModalVisible, setLasetSearch}) => {
 
     const [animateSearch, setAnimateSearch] = useState(false)
     const [searchInput, setSearchInput] = useState('');
+    const [preDefinedPlaces, setPreDefinedPlaces] = useState([]);
 
 
     useEffect(() => {
         window.addEventListener('scroll', ()=> scrollPositionChecker())
+        getPlaces();
+        
         return () => {
             window.removeEventListener('scroll', scrollPositionChecker)
         }
@@ -43,7 +46,20 @@ const Header = ({setGalleryImages, setModalVisible, setLasetSearch}) => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const location = searchInput.split('[*]');
+
+      let location;
+
+      const existedPlace = checkPredefinedPlace(searchInput);
+      if(existedPlace){
+        location = [existedPlace.lat, existedPlace.lang]
+      }
+      else if(searchInput.includes(",")){
+        location = searchInput.split(',');
+      }
+      else{
+        alert('Not an valid Input');
+        return false
+      }
       try{
         const res = await axios.get('http://127.0.0.1:8000/api/test', {
           params: {
@@ -63,6 +79,31 @@ const Header = ({setGalleryImages, setModalVisible, setLasetSearch}) => {
         alert("something Went Wrong");
         console.log(err)
       }
+      }
+
+        
+      const checkPredefinedPlace = (newPlace) => {
+
+        let place = preDefinedPlaces.find(place => place?.name === newPlace)
+        if(place){
+          return place;
+        }
+
+        return false;
+      }
+
+
+      const getPlaces = async () => {
+        try {
+          
+         const res = await axios.get('http://127.0.0.1:8000/api/get-places');
+         setPreDefinedPlaces(res.data);
+         console.log("Places",res.data)
+
+        } catch (error) {
+          console.log(error);
+          setPreDefinedPlaces([]);
+        }
       }
 
 

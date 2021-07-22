@@ -6,7 +6,7 @@
     height: 200px;
     max-width: 350px;
     z-index: 23;
-    background-color: rgb(250, 210, 198);
+    background-color: rgb(41, 40, 40);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,15 +30,41 @@
         button{
             margin-top: 15px;
             background-color: transparent;
-            color: rgb(180, 2, 2);
+            color: rgb(233, 213, 213);
             font-size: 18px;
             font-weight: bold;
-            border: 2px solid brown !important;
+            border: 2px solid rgb(255, 231, 231) !important;
             transition: 0.3s ease-in;
             &:hover{
                 border: 2px sold transparent;
                 color: white;
-                background-color: brown;
+                background-color: rgb(39, 6, 6);
+                cursor: pointer;
+            }
+        }
+    }
+    div{
+        height: 100px;
+        text-align: center;
+        h4{
+            padding: 20px 0;
+            color: rgb(231, 198, 198);
+        }
+        button{
+            background-color: transparent;
+            color: rgb(224, 232, 255);
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid rgb(212, 226, 248) !important;
+            transition: 0.3s ease-in;
+            width: 100%;
+            border-radius: 16px;
+            padding: 8px;
+            outline: none;
+            &:hover{
+                border: 2px sold transparent;
+                color: rgb(50, 62, 235);
+                background-color: rgb(213, 218, 233);
                 cursor: pointer;
             }
         }

@@ -56,13 +56,7 @@ export const AuthProvider = (props) => {
                 const userEmail = window.localStorage.getItem("userEmail");
                 const user = { email: userEmail }
                 if (accessToken) {
-                    dispatch({
-                        type: "INITIALIZE",
-                        payload: {
-                            isAuthenticated: true,
-                            user,
-                        },
-                    });
+                    login(userEmail)
                 } else {
                     dispatch({
                         type: "INITIALIZE",
@@ -96,7 +90,7 @@ export const AuthProvider = (props) => {
             const accessToken = Date.now();
             localStorage.setItem("accessToken", accessToken);
             localStorage.setItem("userEmail", email);
-            const user = { email: email }
+            const user = { email: email, id: res.data.user.id}
             dispatch({
                 type: "LOGIN",
                 payload: {
@@ -113,6 +107,7 @@ export const AuthProvider = (props) => {
 
     const logout = async () => {
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("userEmail");
         dispatch({ type: "LOGOUT" });
     };
 

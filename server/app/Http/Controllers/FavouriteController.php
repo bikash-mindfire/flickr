@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class FavouriteController extends Controller
 {
     public function getFavImages(Request $request){
-        $res = Favourite::where('uid', 2)->get();
+        $userid= $request->id;
+        $res = Favourite::where('uid', $userid)->get();
 
         return $res;
     }
@@ -22,6 +23,16 @@ class FavouriteController extends Controller
             'image_url' => $url
         ]);
 
-        return $fav;
+        if($fav){
+            return response()->json([
+                'success' => true,
+                'fav' => $fav
+            ], 201);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => "Something Went Wrong"
+        ], 201);
     }
 }

@@ -5,15 +5,22 @@ import Header from './components/Header/Header'
 import Modal from './components/Modal/Modal'
 import axios from 'axios'
 import Paginate from './components/Paginate/Paginate'
+import Favourite from './components/Favourite/Favourite'
+import useAuth from './hooks/useAuth'
+import AddPlace from './components/AddPlace/AddPlace'
+import FloatButton from './components/FloatButton/FloatButton'
 const App = () => {
   const [galleryImages, setGalleryImages] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [addPlaceModalActive, setAddPlaceModalActive] = useState(false)
   const [lastSearch, setLasetSearch ] = useState({
     lat: null,
     lang: null,
     page: null
   })
+  
+   const {isAuthenticated} = useAuth();
 
   const paginate = async (page) => {
     setLoading(true)
@@ -55,11 +62,13 @@ const App = () => {
 
   return (
     <>
-
+    <FloatButton setAddPlaceModalActive={setAddPlaceModalActive} />
+      {addPlaceModalActive && <AddPlace setAddPlaceModalActive={setAddPlaceModalActive} />}
       {modalVisible && <Modal />}
       <Header setGalleryImages={setGalleryImages} setModalVisible={setModalVisible} setLasetSearch={setLasetSearch} />
       <Gallery galleryImages={galleryImages} />
       {galleryImages.length !== 0 && <Paginate handlePageDown={handlePageDown} handlePageUp={handlePageUp} lastpage={lastSearch.page} loading={loading} />}
+      {isAuthenticated && <Favourite />}
     </>
   )
 }

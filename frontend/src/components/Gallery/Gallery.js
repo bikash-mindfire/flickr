@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useContext }  from "react";
 import "./Gallery.scss";
+import FavouriteContext from "../../context/FavouriteContext";
+import OutlinedHeart from '../../static/heart.png';
+import Filled from '../../static/like.png';
+
+
+
 const Gallery = ({ galleryImages }) => {
+
+  const {addFav, favImages} = useContext(FavouriteContext);
+  
+  function checkImageExist(url) {
+    return favImages.some(function(img) {
+      return img.image_url === url;
+    }); 
+  }
+
   return (
     <div className="gallery">
       <div className="heading">
@@ -59,15 +74,27 @@ const Gallery = ({ galleryImages }) => {
         </div>
       ) : (
         <div className="image-gallery-wrapper">
-          {galleryImages.map((img, index) => 
-          (<div className="image-wrapper" key={index}>
-            <div className="gallery-img">
-              <img
-                src={`https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`}
-                alt=""
-              />
-            </div>
-          </div>))}
+          {galleryImages.map((img, index) => {
+            const url = `https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`
+            const isInFav = checkImageExist(url);
+            return (<div className="image-wrapper" key={index}>
+                    <div className="gallery-img" onClick={() => addFav(url)}>
+                      <img
+                        src={url}
+                        alt=""
+                      />
+                      {!isInFav ? (
+                            <div className="favouriteWrapper active">
+                              <img src={OutlinedHeart} />
+                            </div>
+                            ):
+                            (<div className="favouriteWrapper">
+                              <img src={Filled} />
+                            </div>)
+                            }
+                    </div>
+                  </div>)
+        })}
         </div>
       )}
     </div>

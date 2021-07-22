@@ -27,11 +27,10 @@ const Modal = () => {
                 <input type="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
                 <button type="submit">Log In</button>
             </form> :
-            <>
-                <h2 style={{textAlign: 'center', marginTop: 80}}>{user.email}</h2>
+            <div>
+                <h4>{user.email}</h4>
                 <button onClick={logout}>Log Out</button>
-
-            </>
+            </div>
             }
         </div>
     )
