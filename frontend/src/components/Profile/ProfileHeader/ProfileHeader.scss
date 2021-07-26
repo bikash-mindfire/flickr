@@ -1,0 +1,158 @@
+.profile_header{
+.profile_header_lg{
+    display: flex;
+    height: 65px;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 1000px) {
+        display: none;
+    }
+    .header__left{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .profile_img{
+            width: 45px;
+            height: 45px;
+            overflow: hidden;
+            border-radius: 28px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-position: center;
+                object-fit: cover;
+            }
+        }
+        .search__bar{
+            margin-left: 10px;
+            background-color: #111;
+            height: 35px;
+            padding: 2px 10px; 
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            .search_icon{
+                
+            }
+            input{
+                background-color: transparent;
+                border: none;
+                outline: none;
+                width: 300px;
+                color: #ddd;
+                margin-left: 4px;
+            }
+        }
+    }
+    .header__center{
+        .link{
+        a{
+            color: rgb(100, 100, 100) !important;
+            text-decoration: none;
+            padding: 0 16px;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: bold;
+            &:hover{
+                color: rgb(175, 169, 169) !important;
+            }
+        }
+    }
+    }
+    .header__right{
+        display: flex;
+        .header_btn{
+            margin: 0 6px;
+            button{
+                padding: 8px 13px;
+                border-radius: 18px;
+                border: none;
+                outline: none;
+                color: #eee;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s ease-in;
+                &:hover{
+                    transform: scale(1.03);
+                }
+            }
+            .create{
+                background-color: #333;
+            }
+            .wallet{
+                background-color: #3b7b4f;
+            }
+        }
+    }
+}
+.profile_header_sm{
+    @media (min-width: 999px) {
+        display: none;
+    }
+    display: flex;
+    height: 65px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+    .header__left{
+        max-width: 60px;
+
+        .humburger_menu{
+            margin-top: -3px;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.123);
+            }
+        }
+    }
+    .header__center{
+        flex: 1;
+        max-width: 600px;
+        .search__bar{
+            background-color: #111;
+            height: 35px;
+            padding: 2px 10px; 
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            width: 90%;
+            justify-content: center;
+            margin: 0 auto;
+
+            .search_icon{
+                
+            }
+            input{
+                background-color: transparent;
+                border: none;
+                outline: none;
+                width: 70%;
+                color: #ddd;
+                margin-left: 4px;
+            }
+        }
+    }
+    .header__right{
+        max-width: 60px;
+        .profile_img{
+            width: 45px;
+            height: 45px;
+            overflow: hidden;
+            border-radius: 28px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-position: center;
+                object-fit: cover;
+            }
+        }
+    }
+}
+}

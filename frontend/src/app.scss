@@ -1,9 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 body{
-  background:linear-gradient(rgba(224, 218, 218, 0.774), rgba(226, 218, 218, 0.829)), url('https://images.pexels.com/photos/3742639/pexels-photo-3742639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   min-height: 120vh;
+  background-color: rgb(0, 0, 0);
+}
+
+.profile_page{
+  padding: 0 60px;
+  &.body_overflow_hidden{
+    overflow: hidden !important;
+    height: 100vh;
+  }
+  @media (max-width: 1000px) {
+    padding:  0 0;
+  }
+  .profile_content{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 950px;
+    color: #fff;
+    padding-bottom: 40px;
+    @media (max-width: 1000px) {
+      padding: 0 5px;
+    }
+  }
 }

@@ -1,0 +1,84 @@
+.sidebar{
+    @media (min-width: 999px) {
+        display: none;
+    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 250px;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgb(29, 29, 29);
+    z-index: 6;
+    .profile{
+        padding: 25px 10px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #222;
+        .profile-pic{
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            overflow: hidden;
+            img{
+                width: 60px;
+                height: 60px;
+                object-position: center;
+                object-fit: cover;
+            }
+        }
+        .profile-info{
+            padding-left: 10px;
+            color: #ddd;
+        }
+    }
+    .nav-link{
+        padding: 14px;
+        border-bottom: 1px solid #222;
+        transition: 0.2s ease-in-out;
+        a{
+            text-decoration: none;
+            color: #eee;
+        }
+        &:hover{
+            background-color: #111;
+            cursor: pointer;
+        }
+    }
+    .sidebar-btn{
+        padding: 10px;
+        margin-top: 60px    ;
+        .btn{
+            width: 100%;
+            margin-top: 16px;
+            button{
+                border: none;
+                outline: none;
+                padding: 4px 7px;
+                width: 100%;
+                display: block;
+                border-radius: 16px;
+                
+            }
+            &:first-child{
+                button{
+                    background-color: #333;
+                    color: #fff;
+                }
+            }
+            &:last-child{
+                button{
+                    background-color: rgb(3, 56, 40);
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+.sidebar-wrapper{
+    z-index: 3;
+    background-color: rgba(10, 10, 10, 0.116);
+    width: 100vw;
+    height: 100vh;
+}
