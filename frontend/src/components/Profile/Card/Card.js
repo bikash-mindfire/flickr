@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.scss";
 import {FaShare,FaRegHeart} from 'react-icons/fa'
 import { Link } from "react-router-dom";
-const Card = () => {
+const Card = ({galleryImages}) => {
   return (
     <div className="card">
         <div className="tabs">
@@ -10,14 +10,24 @@ const Card = () => {
             <Link>Created</Link>
         </div>
       <div className="image-gallery-wrapper">
-       <SingleCard />
-       <SingleCard />
-       <SingleCard />
-       <SingleCard />
-       <SingleCard />
-       <SingleCard />
-       <SingleCard />
-       <SingleCard />
+      {galleryImages.length === 0 ? 
+      <>
+        <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+       <SingleCard url="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+       </> : 
+       <>
+         {galleryImages.map((img, index) => {
+          const url = `https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`
+         return (
+          <SingleCard url={url}/>
+         )
+         })}
+       </>}
       </div>
     </div>
   );
@@ -26,7 +36,7 @@ const Card = () => {
 export default Card;
 
 
-const SingleCard = () => {
+const SingleCard = ({url}) => {
     return(
         <div className="wrapper">
             <div className="wrap-border">
@@ -48,7 +58,7 @@ const SingleCard = () => {
           <div className="card-media">
             <div className="gallery-img">
               <img
-                src="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                src={url}
                 alt=""
               />
             </div>

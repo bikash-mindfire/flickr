@@ -4,7 +4,7 @@ import {MdSearch} from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import {FaAlignLeft} from 'react-icons/fa'
 
-const ProfileHeader = ({handleSideBarShow}) => {
+const ProfileHeader = ({handleSideBarShow, searchInput, handleSubmit,handleChange}) => {
     return (
         <div className="profile_header">
         <div className="profile_header_lg">
@@ -14,7 +14,13 @@ const ProfileHeader = ({handleSideBarShow}) => {
                 </div>
                 <div className="search__bar">
                     <MdSearch className="search_icon" color="#fff" />
-                    <input type="search" placeholder="Search Items, Collections and Profiles" />
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" 
+                        placeholder="Search Items, Collections and Profiles" 
+                        onChange={handleChange} 
+                        value={searchInput} 
+                    />
+                    </form>
                 </div>
             </div>
             <div className="header__center">
@@ -48,7 +54,13 @@ const ProfileHeader = ({handleSideBarShow}) => {
             <div className="header__center">
                 <div className="search__bar">
                         <MdSearch className="search_icon" color="#fff" />
-                        <input type="search" placeholder="Search ..." />
+                        <form onSubmit={handleSubmit}>
+                        <input type="text" 
+                        placeholder="Search ..." 
+                        onChange={handleChange} 
+                        value={searchInput} 
+                    />
+                    </form>
                     </div>
             </div>
             <div className="header__right">
